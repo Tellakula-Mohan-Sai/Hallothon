@@ -12,3 +12,12 @@ def authenticate(email,password):
     query = {'email':email,'password':password}
     return mycol.find_one(query)
 
+def register(name,email,mobile,score,role,password):
+    my_dict = {"name":name,"email":email,"mobile":mobile,"score":score,"role":role,"password":password}
+    try:
+        mycol.insert_one(my_dict)
+        return True
+    except Exception as e:
+        print(e)
+        return False
+
