@@ -1,12 +1,17 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './App.css';
+import axios from 'axios';
+
 
 const App = () => {
   const navigate = useNavigate();
   const [isLogin, setIsLogin] = useState(true);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
+  const [name, setName] = useState(''); // Add name state
+  const [mobile, setMobile] = useState(''); // Add mobile state
 
   const toggleForm = () => {
     setIsLogin(!isLogin);
@@ -15,13 +20,38 @@ const App = () => {
   const handleLogin = (e) => {
     e.preventDefault();
 
-    // Sample login logic (replace with your actual authentication logic)
-    if (email === 'u@u.com' && password === 'p') {
-      // Redirect to /userhome route on successful login
-      navigate('/userhome');
+    if (isLogin) {
+      // Handle login
+      axios.post('http://127.0.0.1:5000/login', {
+        email: email,
+        password: password,
+      })
+      .then(function(response) {
+        if (response.status === 200) {
+          navigate('/userhome');
+        } else {
+          alert(response.data);
+        }
+      });
     } else {
-      // Handle invalid login (show error message or similar)
-      alert('Invalid email or password');
+      // Handle registration
+      axios.post('http://127.0.0.1:5000/register', {
+        email: email,
+        password: password,
+        name: name, // Add name field
+        mobile: mobile // Add mobile field
+      })
+      .then(function(response) {
+        if (response.status === 200) {
+          // Registration successful, you can navigate to the login page or handle it as needed
+          navigate('/userhome');
+        }else if(response.status === 250){
+          alert("User already exists/Invalid data");
+        } 
+        else{
+          console.log(response.data);
+        }
+      });
     }
   };
 
@@ -49,18 +79,46 @@ const App = () => {
               onChange={(e) => setPassword(e.target.value)}
               required
             />
-          </div>
-          {!isLogin && (
-            <div className="form-group">
-              <label>Confirm Password:</label>
-              <input type="password" placeholder="Confirm your password" />
             </div>
+          {!isLogin && (
+            <>
+              <div className="form-group">
+                <label>Confirm Password:</label>
+                <input
+                  type="password"
+                  placeholder="Confirm your password"
+                  value={confirmPassword}
+                  onChange={(e) => setConfirmPassword(e.target.value)}
+                  required
+                />
+              </div>
+              <div className="form-group">
+                <label>Name:</label>
+                <input
+                  type="text"
+                  placeholder="Enter your name"
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
+                  required
+                />
+              </div>
+              <div className="form-group">
+                <label>Mobile:</label>
+                <input
+                  type="text"
+                  placeholder="Enter your mobile number"
+                  value={mobile}
+                  onChange={(e) => setMobile(e.target.value)}
+                  required
+                />
+              </div>
+            </>
           )}
           <button type="submit">{isLogin ? 'Login' : 'Sign Up'}</button>
         </form>
         <p onClick={toggleForm} className="toggle-form">
           {isLogin ? 'Create an account' : 'Already have an account? Login'}
-        </p>
+          </p>
       </div>
     </div>
   );
