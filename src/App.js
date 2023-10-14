@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './App.css';
+import axios from 'axios';
 
 const App = () => {
   const navigate = useNavigate();
@@ -15,14 +16,20 @@ const App = () => {
   const handleLogin = (e) => {
     e.preventDefault();
 
-    // Sample login logic (replace with your actual authentication logic)
-    if (email === 'u@u.com' && password === 'p') {
-      // Redirect to /userhome route on successful login
-      navigate('/userhome');
-    } else {
-      // Handle invalid login (show error message or similar)
-      alert('Invalid email or password');
-    }
+    axios.get('http://127.0.0.1:5000/login', {
+      params: {
+        email: email,
+        password: password
+      }
+    })
+    .then(function(response) {
+      if(response.status===200){
+        navigate('/userhome')
+      }
+      else{
+        alert(response.data);
+      }
+    })
   };
 
   return (
