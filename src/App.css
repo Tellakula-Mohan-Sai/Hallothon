@@ -1,0 +1,53 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  background-color: #f0f0f0;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-image: url('./images/finance-bg.jpg'); /* Replace 'path/to/your/background-image.jpg' with the actual path to your background image */
+  background-size: cover;
+  background-position: center;
+}
+
+.form-container {
+  background: #f9f9f9;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  width: 300px;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+form input {
+  width: calc(100% - 20px); /* Adjust the width and padding accordingly */
+  margin: 0 auto; /* Center the input fields horizontally */
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+form button {
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.toggle-form {
+  color: #4caf50;
+  cursor: pointer;
+  margin-top: 15px;
+}
