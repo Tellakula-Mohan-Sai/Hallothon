@@ -1,0 +1,80 @@
+/* Challenges.css */
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #f0f0f0; /* Light background color */
+    color: #333; /* Text color */
+    font-family: 'Arial Rounded MT Bold', sans-serif; /* Rounded font */
+  }
+  
+  .challenges-container {
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 24px; /* Increased base font size */
+  }
+  
+  .navbar {
+    width: 100%;
+    background-color: #001f3f; /* Navy blue header background color */
+    padding: 15px 0; /* Increased padding for a bigger navbar */
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    z-index: 1000;
+    border-top-left-radius: 20px; /* Bigger rounded corners for the header */
+    border-top-right-radius: 20px;
+  }
+  
+  .logo {
+    font-size: 36px; /* Bigger font size for the logo */
+    font-weight: bold;
+    color: #fff; /* Text color for the logo */
+  }
+  
+  .nav-options {
+    display: flex;
+  }
+  
+  .nav-option {
+    margin: 0 30px; /* Increased margin for navigation options */
+    cursor: pointer;
+    transition: all 0.3s ease;
+    color: #fff; /* Text color for the navigation options */
+  }
+  
+  .nav-option.active {
+    text-decoration: underline;
+  }
+  .content{
+    display: inline-block;
+  }
+  /* .content {
+
+    justify-content: space-around;
+    width: 90%;
+    padding: 40px; 
+    margin-top: 100px; 
+   */
+  /* Add more custom styles specific to your Challenges component here */
+  /* Challenges.css */
+/* ... existing styles ... */
+
+/* Custom scrollbar styles */
+body::-webkit-scrollbar {
+    width: 8px; /* Set the width of the scrollbar */
+  }
+  
+  body::-webkit-scrollbar-thumb {
+    background-color: #001f3f; /* Dark blue color for the scrollbar thumb */
+    border-radius: 4px; /* Rounded corners for the scrollbar thumb */
+  }
+  
+  body::-webkit-scrollbar-track {
+    background-color: #f0f0f0; /* Background color of the scrollbar track */
+  }
+  
