@@ -45,7 +45,10 @@ const App = () => {
         if (response.status === 200) {
           // Registration successful, you can navigate to the login page or handle it as needed
           navigate('/userhome');
-        } else{
+        }else if(response.status === 250){
+          alert("User already exists/Invalid data");
+        } 
+        else{
           console.log(response.data);
         }
       });

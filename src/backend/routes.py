@@ -37,9 +37,22 @@ def registration():
         if(account):
              msg =  "Success"
              status = 200
+        elif(account == False):
+            msg = "User already exists/Invalid data"
+            status = 250
         response = Response(msg, status=status)
         response.headers.add("Access-Control-Allow-Origin", "*")
         return response
+
+@app.route('/leaderboard',methods=['GET','POST'])
+def leaderboard(id,points):
+     id = request.args.get('id')
+     points = request.args.get('points')
+     val = db.update_score(id,points)
+     response = Response(val, status=200)
+     response.headers.add("Access-Control-Allow-Origin", "*")
+     return response
+     
 
 if __name__ == "__main__":
     app.run()
