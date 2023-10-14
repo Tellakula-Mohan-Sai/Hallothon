@@ -33,7 +33,8 @@ const App = () => {
           alert(response.data);
         }
       });
-    } else {
+    }
+     else {
       // Handle registration
       axios.post('http://127.0.0.1:5000/register', {
         email: email,
@@ -45,7 +46,11 @@ const App = () => {
         if (response.status === 200) {
           // Registration successful, you can navigate to the login page or handle it as needed
           navigate('/userhome');
-        } else{
+        } 
+        else if(response.status===250){
+          alert("User Already exists / Invalid User");
+        }
+        else{
           console.log(response.data);
         }
       });

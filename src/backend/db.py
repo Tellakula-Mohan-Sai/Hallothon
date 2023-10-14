@@ -15,6 +15,8 @@ def authenticate(email,password):
 def register(name,email,mobile,score,role,password):
     my_dict = {"name":name,"email":email,"mobile":mobile,"score":score,"role":role,"password":password}
     try:
+        if(mycol.find_one({"_id":email})):
+            return False
         mycol.insert_one(my_dict)
         return True
     except Exception as e:

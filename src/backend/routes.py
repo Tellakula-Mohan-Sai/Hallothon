@@ -36,6 +36,9 @@ def registration():
         if(account):
              msg =  "Success"
              status = 200
+        elif(account==False):
+             msg = "User already exists"
+             status = 250
         response = Response(msg, status=status)
         response.headers.add("Access-Control-Allow-Origin", "*")
         return response
