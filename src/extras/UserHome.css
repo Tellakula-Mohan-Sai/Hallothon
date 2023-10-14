@@ -1,0 +1,188 @@
+
+body {
+  overflow-x: hidden; 
+    margin: 0;
+    padding: 0;
+    background-color: #f0f0f0; /* Light background color */
+    color: #333; /* Text color */
+    font-family: 'Arial Rounded MT Bold', sans-serif; /* Rounded font */
+  }
+  
+  .user-home-container {
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 24px; /* Increased base font size */
+  }
+  
+  .navbar {
+
+    font-family: 'Your Custom Font', sans-serif; /* Use your custom font here */
+    font-weight: bold;
+        /* ... other styles */
+    width: 100%;
+    background-color: #001f3f; /* Navy blue header background color */
+    padding: 15px 0; /* Increased padding for a bigger navbar */
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    z-index: 1000;
+    border-top-left-radius: 20px; /* Bigger rounded corners for the header */
+    border-top-right-radius: 20px;
+  }
+  
+  .logo {
+    font-size: 36px; /* Bigger font size for the logo */
+    font-weight: bold;
+    color: #fff; /* Text color for the logo */
+  }
+  
+  .nav-options {
+    display: flex;
+  }
+  
+  .nav-option {
+    margin: 0 30px; /* Increased margin for navigation options */
+    cursor: pointer;
+    transition: all 0.3s ease;
+    color: #fff; /* Text color for the navigation options */
+  }
+  
+  .nav-option.active {
+    text-decoration: underline;
+  }
+  
+  .content {
+    /* display: flex; */
+    justify-content: space-around;
+    width: 100%;
+    padding: 40px; /* Increased padding for content elements */
+    margin-top: 100px; /* Space between header and content */
+  }
+  
+
+  .news-section {
+    display: flex;
+    background-color: #fff; /* White background for cards */
+    padding: 40px;
+    border-radius: 25px; /* Bigger rounded corners for the cards */
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2); /* Light shadow */
+  }
+  
+  .top-stocks {
+    width: 40%; /* 40% of the page width */
+  }
+  .stock-card {
+    align-self: left;
+  }
+  
+  .news-item {
+    width: 50%; /* 50% of the parent width */
+    margin-top: 20px; /* Increased margin for individual items */
+    padding: 20px;
+    border-radius: 15px; /* Bigger rounded corners for the news cards */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Light shadow */
+  }
+  
+  select {
+    width: calc(100% - 40px); /* Adjusted width to include padding */
+    padding: 20px;
+    margin-top: 20px; /* Increased margin for select element */
+    border-radius: 15px; /* Bigger rounded corners for the select element */
+    border: 1px solid #ccc; /* Border color */
+  }
+  
+  h2,
+  h3,
+  p {
+    margin: 0;
+    padding: 0;
+  }
+  
+  /* Challenges.css */
+/* ... existing styles ... */
+
+/* Custom scrollbar styles */
+body::-webkit-scrollbar {
+    width: 8px; /* Set the width of the scrollbar */
+  }
+  
+  body::-webkit-scrollbar-thumb {
+    background-color: #001f3f; /* Dark blue color for the scrollbar thumb */
+    border-radius: 4px; /* Rounded corners for the scrollbar thumb */
+  }
+  
+  body::-webkit-scrollbar-track {
+    background-color: #f0f0f0; /* Background color of the scrollbar track */
+  }
+  
+
+
+
+
+  /* Profile.css */
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #f0f0f0; /* Light background color */
+  color: #333; /* Text color */
+  font-family: 'Arial Rounded MT Bold', sans-serif; /* Rounded font */
+}
+
+.profile-container {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 24px; /* Increased base font size */
+}
+
+.navbar {
+  width: 100%;
+  background-color: #001f3f; /* Navy blue header background color */
+  padding: 15px 0; /* Increased padding for a bigger navbar */
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  z-index: 1000;
+  border-top-left-radius: 20px; /* Bigger rounded corners for the header */
+  border-top-right-radius: 20px;
+}
+
+.logo {
+  font-size: 36px; /* Bigger font size for the logo */
+  font-weight: bold;
+  color: #fff; /* Text color for the logo */
+}
+
+.nav-options {
+  display: flex;
+}
+
+.nav-option {
+  margin: 0 30px; /* Increased margin for navigation options */
+  cursor: pointer;
+  transition: all 0.3s ease;
+  color: #fff; /* Text color for the navigation options */
+}
+
+.nav-option.active {
+  text-decoration: underline;
+}
+
+.content {
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+  padding: 40px; /* Increased padding for content elements */
+  margin-top: 100px; /* Space between header and content */
+}
+
+/* Add more custom styles specific to your Profile component here */
