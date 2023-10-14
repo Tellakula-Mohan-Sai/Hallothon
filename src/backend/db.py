@@ -21,3 +21,17 @@ def register(name,email,mobile,score,role,password):
         print(e)
         return False
 
+def getScore(id):
+    my_dict = {'_id':id}
+    val = mycol.find_one(my_dict)
+    print(val)
+    return val['score']
+
+def update_score(id,points):
+    my_dict = {"_id":id}
+    val = mycol.find_one(my_dict)
+    print(val)
+    val['score'] = val['score'] + int(points)
+    newvalues = { "$set": { "score": val['score'] } }
+    mycol.update_one({"_id":id},newvalues)
+    return "Success"

@@ -1,4 +1,4 @@
-from flask import Flask, request,Response
+from flask import Flask, request,Response,jsonify
 import db
 from flask_cors import CORS
 app = Flask(__name__)
@@ -39,6 +39,23 @@ def registration():
         response = Response(msg, status=status)
         response.headers.add("Access-Control-Allow-Origin", "*")
         return response
+
+@app.route("/id",methods=['GET'])
+def displayscore():
+     id = request.args.get('id')
+     val = db.getScore(id)
+     response = Response(jsonify({'score':val}),status=200)
+     response.headers.add("Access-Control-Allow-Origin", "*")
+     return response
+
+@app.route('/leaderboard',methods=['GET','POST'])
+def leaderboard():
+     id = request.args.get('id')
+     points = request.args.get('points')
+     val = db.update_score(id,points)
+     response = Response(val, status=200)
+     response.headers.add("Access-Control-Allow-Origin", "*")
+     return response
 
 if __name__ == "__main__":
     app.run()
