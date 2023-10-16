@@ -57,7 +57,7 @@ function UserHome() {
 
       </br>
       <div className='title'>Todays News</div>
-      <Grid container spacing={2}>
+      <Grid container spacing={2} >
         {/* First Card */}
         <Grid item xs={6} >
           <Card variant="outlined"  style={{ paddingTop: '20px', marginBottom:"20px" }}>

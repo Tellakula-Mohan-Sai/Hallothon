@@ -22,18 +22,23 @@ const App = () => {
 
     if (isLogin) {
       // Handle login
-      axios.post('http://127.0.0.1:5000/login', {
+      axios.post('http://127.0.0.1:5000/login',{
         email: email,
         password: password,
       })
       .then(function(response) {
+        console.log(response)
         if (response.status === 200) {
+          console.log(response.data);
+          window.id = email;
+          console.log(window.id)
           navigate('/userhome');
         } else {
           alert(response.data);
         }
       });
-    } else {
+    }
+     else {
       // Handle registration
       axios.post('http://127.0.0.1:5000/register', {
         email: email,
@@ -44,10 +49,13 @@ const App = () => {
       .then(function(response) {
         if (response.status === 200) {
           // Registration successful, you can navigate to the login page or handle it as needed
+          window.id = email;
+          console.log(window.id)
           navigate('/userhome');
-        }else if(response.status === 250){
-          alert("User already exists/Invalid data");
         } 
+        else if(response.status===250){
+          alert("User Already exists / Invalid User");
+        }
         else{
           console.log(response.data);
         }

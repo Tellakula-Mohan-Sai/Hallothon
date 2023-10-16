@@ -1,8 +1,9 @@
 import { useState } from 'react'
 import { quiz } from './questions/q'
 import './Quiz.css'
-
+import axios from 'axios'
 const Quiz = () => {
+
   const [activeQuestion, setActiveQuestion] = useState(0)
   const [selectedAnswer, setSelectedAnswer] = useState('')
   const [showResult, setShowResult] = useState(false)
@@ -12,10 +13,23 @@ const Quiz = () => {
     correctAnswers: 0,
     wrongAnswers: 0,
   })
+  const sendPostRequest = async () => {
+    try {
+      const response = await axios.post('http://localhost:5000/leaderboard', {
+        "id": window.id, // Replace this with the actual id you want to send
+        "points": result.score,
+      }, {
+        headers: {'Content-Type': 'application/json'}
+      });
+      console.log(response.data); // Handle the response from the server as needed
+    } catch (error) {
+      console.error('Error sending the post request:', error);
+    }
+  };
 
   const { questions } = quiz
   const { question, choices, correctAnswer } = questions[activeQuestion]
-
+  let ele = 0
   const onClickNext = () => {
     setSelectedAnswerIndex(null)
     setResult((prev) =>
@@ -31,9 +45,16 @@ const Quiz = () => {
       setActiveQuestion((prev) => prev + 1)
     } else {
       setActiveQuestion(0)
+
+      window.score= result.score
+      console.log("wkwekwe", window.score)
+
       setShowResult(true)
+      sendPostRequest()
+
     }
   }
+
 
   const onAnswerSelected = (answer, index) => {
     setSelectedAnswerIndex(index)

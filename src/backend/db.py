@@ -9,7 +9,7 @@ mycol = mydb['User_details']
 print(mydb.list_collection_names())
 
 def authenticate(email,password):
-    query = {'_id':email,'password':password}
+    query = {'email':email,'password':password}
     return mycol.find_one(query)
 
 def register(name,email,mobile,score,role,password):
@@ -22,9 +22,20 @@ def register(name,email,mobile,score,role,password):
     except Exception as e:
         print(e)
         return False
-    
+
+def getScore(id):
+    my_dict = {'_id':id}
+    val = mycol.find_one(my_dict)
+    print(id,val)
+    return val
+    # return val['score']
+
 def update_score(id,points):
     my_dict = {"_id":id}
-    val = mycol.findone(my_dict)
-    val['score'] = val['score'] + points
-    return True
+    print("woohooo",my_dict)
+    val = mycol.find_one(my_dict)
+    print(val)
+    val['score'] = val['score'] + int(points)
+    newvalues = { "$set": { "score": val['score'] } }
+    mycol.update_one({"_id":id},newvalues)
+    return "Success"
